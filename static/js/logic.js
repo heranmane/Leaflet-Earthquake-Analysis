@@ -14,8 +14,9 @@ function chooseColor(depth) {
             return "#ded11b";
         case depth > 10:
             return "#cddb32";
-        default:
+       default:
             return "#32a852";
+            
 
     }
 }
@@ -132,13 +133,16 @@ var legend = L.control({ position: 'bottomright' });
 legend.onAdd = function () {
 
     var div = L.DomUtil.create('div', ' legend'),
-        depth = [-10, 10, 30, 50, 70, 90];
-        
+    depth = [-10, 10, 30, 50, 70, 90];
 
-    for (var i = 0; i < depth.length; i++) {
+    for (var i = 0; i < depth.length ; i++) {
+        
         div.innerHTML +=
-            '<li style=\"background-color:' + chooseColor(depth[i]) + '"></li> ' 
-            + depth[i]+ (depth[i + 1] ? ' - ' + depth[i + 1] + '<br>' : ' + ');
+                
+                '<li style="background-color:'  + chooseColor(depth[i] + 1) + '"></li> '
+                + depth[i] + (depth[i + 1] ? ' - ' + depth[i + 1] + '<br>' : ' + ');
+        
+        
     }
 
     return div;
